@@ -1,1 +1,4 @@
+domain\TestPOJO.class
 LocalStackMain.class
+service\CRUD.class
+domain\Inventory.class

@@ -3,10 +3,7 @@ package domain;
 
 import java.util.Set;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.amazonaws.services.dynamodbv2.datamodeling.*;
 
 @DynamoDBTable(tableName="testDynamoDB")
 public class TestPOJO {
@@ -21,7 +18,7 @@ public class TestPOJO {
     public int getYear() {return year; }
     public void setYear(int year) { this.year = year; }
 
-    @DynamoDBAttribute(attributeName="title")
+    @DynamoDBRangeKey(attributeName="title")
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
 

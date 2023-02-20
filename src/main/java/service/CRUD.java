@@ -47,20 +47,20 @@ public class CRUD {
 
             //Reading an item
             System.out.println("Read operation");
-            System.out.println(getItem(client,table_name));
+            System.out.println(getItem(client,table_name).toString());
 
 
             //Updating an item
             System.out.println("Update operation");
-            System.out.println(updateItem(client,table_name));
+            System.out.println(updateItem(client,table_name).toString());
 
 
             //Deleteing an item
             DynamoDBMapper mapper = new DynamoDBMapper(client);
-            TestPOJO updatedItem = mapper.load(TestPOJO.class, 300);
+            TestPOJO updatedItem = mapper.load(TestPOJO.class, 2018,"Book new");
             mapper.delete(updatedItem);
             System.out.println("Deleting item with the 300 id");
-            TestPOJO deletedItem = mapper.load(TestPOJO.class, updatedItem.getYear());
+            TestPOJO deletedItem = mapper.load(TestPOJO.class, updatedItem.getYear(),updatedItem.getTitle());
             if (deletedItem == null) {
                 System.out.println("Done - Sample item is deleted.");
             }
@@ -90,13 +90,13 @@ public class CRUD {
     private static TestPOJO getItem(AmazonDynamoDB client,String table_name)
     {
         DynamoDBMapper mapper = new DynamoDBMapper(client);
-        return mapper.load(TestPOJO.class, 2018);
+        return mapper.load(TestPOJO.class, 2018,"Book 601");
     }
 
     private static TestPOJO updateItem(AmazonDynamoDB client,String table_name)
     {
         DynamoDBMapper mapper = new DynamoDBMapper(client);
-        TestPOJO itemRetrieved = mapper.load(TestPOJO.class,2018);
+        TestPOJO itemRetrieved = mapper.load(TestPOJO.class,2018,"Book 601");
         itemRetrieved.setTitle("Book new");
         mapper.save(itemRetrieved);
         return itemRetrieved;
