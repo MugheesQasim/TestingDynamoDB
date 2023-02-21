@@ -15,8 +15,13 @@ import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
+import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
+import software.amazon.awssdk.services.dynamodb.model.DynamoDbException;
+import software.amazon.awssdk.services.dynamodb.model.QueryRequest;
+import software.amazon.awssdk.services.dynamodb.model.QueryResponse;
 
 import java.net.URI;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class CRUD {
@@ -101,4 +106,5 @@ public class CRUD {
         mapper.save(itemRetrieved);
         return itemRetrieved;
     }
+
 }

@@ -1,4 +1,6 @@
+service\QueryAndScan.class
 domain\TestPOJO.class
 LocalStackMain.class
+service\S3Service.class
 service\CRUD.class
 domain\Inventory.class
